@@ -1,10 +1,30 @@
 import Image from "next/image";
 
-export default function Home() {
+function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
+        <div>
+          <h1>Welcome to Rick & Morty</h1>
+          <p>Homepage - Statically Rendered</p>
+          <br />
+          <p>
+            Characters - rendered Serder-Side - shows a list of Rick and Morty
+            characters. (WITH PAGINATION - client side) <br />
+            From there, you can click each caracter to follow a
+            Statically-Generated path and visit Character page rendering with
+            Static-Site-Generation (WITH PAGINATION) (Pictures left, information
+            right for example) . Fetched data for the pages from a REST API
+          </p>
+          <br />
+          <p>
+            Episodes - page is rendered Client-Side. I`ve used a filtered
+            GraphQL query to fetch the data.{" "}
+          </p>
+          <br />
+          <p>Sonstiges: Navbar, Footer, search</p>
+        </div>
+        {/* <Image
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
@@ -12,10 +32,16 @@ export default function Home() {
           height={38}
           priority
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+        <ol
+          className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[roboto]"
+          //className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]"
+        >
           <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+            Welcome to Rick & Morty
+            <code
+              className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[roboto]"
+              // className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold"
+            >
               src/app/page.tsx
             </code>
             .
@@ -49,7 +75,7 @@ export default function Home() {
           >
             Read our docs
           </a>
-        </div>
+        </div> */}
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
@@ -101,3 +127,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
