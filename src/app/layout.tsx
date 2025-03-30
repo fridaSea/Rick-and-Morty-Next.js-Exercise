@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
+import NavBar from "@/components/NavBar";
 
 const roboto = Roboto({
   weight: "400",
@@ -47,7 +48,7 @@ export default function RootLayout({
           {/* Favicon im Head einfügen */}
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <nav> Home</nav>
+        <NavBar />
         {children}
       </body>
     </html>
