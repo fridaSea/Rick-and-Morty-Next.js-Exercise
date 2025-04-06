@@ -31,3 +31,8 @@ export type Info = {
   next: string;
   prev: null;
 };
+
+export type User = {
+  email: string;
+  password: string;
+};
