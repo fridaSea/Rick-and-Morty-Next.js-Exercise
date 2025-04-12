@@ -1,12 +1,11 @@
-"use client";
-
-import { APIOKResponse, Character } from "@/model/types/types";
+import { Character } from "@/model/types/types";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import styles from "@/styles/page.module.css";
 
-function CharactersPage() {
+export const revalidate = 0;
+
+async function CharactersPage() {
   // await new Promise((resolve) => {
   //   return setTimeout(resolve, 3000);
   // });
@@ -20,21 +19,22 @@ function CharactersPage() {
   // );
   // both are visible in the Konsole in the browser if we DON`T use "use client"
 
-  const [characters, setCharacters] = useState<Character[] | null>(null);
-  const pathname = usePathname();
+  // const [characters, setCharacters] = useState<Character[] | null>(null);
 
-  const getCharacters = async () => {
-    const response = await fetch("https://rickandmortyapi.com/api/character");
-    const data: APIOKResponse = await response.json();
-    setCharacters(data.results);
-  };
+  // const getCharacters = async () => {
+  //   const response = await fetch("https://rickandmortyapi.com/api/character");
+  // const data: APIOKResponse = await response.json();
+  //setCharacters(data.results);
+  //};
+  const response = await fetch("https://rickandmortyapi.com/api/character");
+  const character: Character = await response.json();
 
-  useEffect(() => {
-    getCharacters();
-  }, []);
+  // useEffect(() => {
+  //   getCharacters();
+  // }, []);
 
   return (
-    <div>
+    <div className={styles.page}>
       <p>List of Characters</p>
       <p>
         Client Side Rendering - this component is rendered on the browser when
@@ -62,7 +62,7 @@ function CharactersPage() {
                     {character.name}
                   </h5>
                 </a>
-                <Link href={`characters/${character.name}`}>Read more</Link>
+                <Link href={`characters/${character.id}`}>Read more</Link>
               </div>
             </div>
           );
