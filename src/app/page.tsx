@@ -1,15 +1,32 @@
+"use client";
 import Image from "next/image";
 
 function Home() {
+  console.log("where do you see this");
+
+  const getTodos = async () => {
+    console.log("secret in Client :>> ", process.env.SECRET);
+    const response = await fetch("http://localhost:3000/api/todos");
+    const result = await response.json();
+    console.log("result :>> ", result);
+  };
+
+  // useEffect(() => {
+  //   getTodos();
+  // }, [])
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div>
           <h1>Welcome to Rick & Morty</h1>
-          <p>Homepage - Statically Rendered</p>
+          <p>
+            Homepage - Statically Rendered - don`t have to do anything because
+            it is already statically rendered/ on the server
+          </p>
           <br />
           <p>
-            Characters - rendered Serder-Side - shows a list of Rick and Morty
+            Characters - rendered Server-Side - shows a list of Rick and Morty
             characters. (WITH PAGINATION - client side) <br />
             From there, you can click each caracter to follow a
             Statically-Generated path and visit Character page rendering with
@@ -19,10 +36,13 @@ function Home() {
           <br />
           <p>
             Episodes - page is rendered Client-Side. I`ve used a filtered
-            GraphQL query to fetch the data.{" "}
+            GraphQL query to fetch the data. FILTER: Choose a season: DROPDOWN
+            MENU
           </p>
           <br />
           <p>Sonstiges: Navbar, Footer, search</p>
+          <br />
+          <button onClick={getTodos}>Get todos</button>
         </div>
         {/* <Image
           className="dark:invert"
@@ -77,7 +97,7 @@ function Home() {
           </a>
         </div> */}
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+      {/* <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
@@ -123,7 +143,7 @@ function Home() {
           />
           Go to nextjs.org →
         </a>
-      </footer>
+      </footer> */}
     </div>
   );
 }
